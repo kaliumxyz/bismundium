@@ -1,0 +1,18 @@
+{
+  "name": "euphoria-search",
+  "version": "0.1.0",
+  "description": "find stuff on euphoria.io :D",
+  "main": "index.js",
+  "repository": "https://github.com/kaliumxyz/euphoria-search",
+  "author": "kalium",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.19.1"
+  },
+  "keywords": [
+    "euphoria-search"
+  ],
+  "scripts": {
+    "test": "ava"
+  }
+}
