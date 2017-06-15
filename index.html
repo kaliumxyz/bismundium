@@ -20,10 +20,11 @@
 
 			}
 			socket.onopen = data => {
-				document.querySelector('ul').innerHTML = JSON.stringify(data)
+				// document.querySelector('ul').innerHTML = 'connected'
 			}
 			socket.onmessage = data => {
-				document.querySelector('ul').innerHTML = JSON.stringify(data)
+				console.log(data)
+				document.querySelector('ul').innerHTML += `<li> ${JSON.stringify(data.data)} </li>`
 			}
 			input.onkeypress = ev => {
 				window.clearTimeout(timeout)

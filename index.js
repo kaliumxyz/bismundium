@@ -15,10 +15,16 @@ ws.on('connection', socket => {
 	socket.send('connected')
 	socket.on('message', 
 		data => {
+			socket.send(data, console.error)
 			console.log(data)
 			fif.find(data, './database/', '.log$').then( 
-			// data => data.forEach(x => console.log(x))
-			socket.send
+			//data => data.forEach(x => console.log(x))
+			data => {
+				for(let results in data){
+				console.log(results)
+				console.log(data[results])
+				socket.send(JSON.stringify(data[results]), console.error).bind(socket)
+			}}
 		)
 		}
 	)
