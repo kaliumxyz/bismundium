@@ -1,12 +1,28 @@
 'use strict'
-// require socket.io and set it up to listen to port 31337.
-const io = require('socket.io')(31337)
+// require ws and set it up to listen to port 31337.
+const WebSocket = require('ws')
+const ws = new WebSocket.Server({ port: 31337 })
+
+const fif = require('find-in-files')
 
 // todo:
 // - Add a function to read out the DB.
 
 
-io.on('connection', socket => {
-	socket.emit('connected', 'msgs')
-	socket.on('client-input', console.log)
+ws.on('connection', socket => {
+
+	console.log("User connected", socket)
+	socket.send('connected')
+	socket.on('message', 
+		data => {
+			console.log(data)
+			fif.find(data, './database/', '.log$').then( 
+			// data => data.forEach(x => console.log(x))
+			socket.send
+		)
+		}
+	)
+	socket.on("disconnect", ev => {
+		console.log('disconnected:' + socket)
+	})
 })

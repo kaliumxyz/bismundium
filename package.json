@@ -14,5 +14,10 @@
   ],
   "scripts": {
     "test": "ava"
+  },
+  "dependencies": {
+    "find-in-files": "^0.4.0",
+    "socket.io": "^2.0.3",
+    "ws": "^3.0.0"
   }
 }
