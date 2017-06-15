@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 	</head>
 	<body>
 		<input />
@@ -7,15 +8,16 @@
 
 		</ul>
 		<script>
-			// sends a search request to the server.
-			function search (value) {
-
-			}
+			const socket = io.connect("http://kalium.xyz:31337/")
 			const input = document.querySelector('input')
+			// sends a search request to the server.
+			function search() {
+				socket.send('clientInput', input.value)
+			}
 			input.onkeypress = ev => {
-				window.clearTimeout(callback)
+				window.clearTimeout(search)
 
-				window.setTimeout(callback, 600)
+				window.setTimeout(search, 600)
 
 			}
 		</script>
