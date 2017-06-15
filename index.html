@@ -10,15 +10,24 @@
 		<script>
 			const socket = io.connect("http://kalium.xyz:31337/")
 			const input = document.querySelector('input')
+			let timeout
 			// sends a search request to the server.
 			function search() {
-				socket.send('clientInput', input.value)
+				socket.emit('client-input', input.value)
 			}
+			// formats the incoming data into an unordered list.
+			function format() {
+				
+			}
+			socket.on('connected', data => {
+				document.querySelector('ul').innerHTML = data
+			})
+			socket.on('server-reply', data => {
+				document.querySelector('ul').innerHTML = data
+			})
 			input.onkeypress = ev => {
-				window.clearTimeout(search)
-
-				window.setTimeout(search, 600)
-
+				window.clearTimeout(timeout)
+				timeout = window.setTimeout(search, 600)
 			}
 		</script>
 	</body>
