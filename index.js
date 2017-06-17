@@ -1,13 +1,12 @@
 'use strict'
 const sqlite3 = require('sqlite3')
-const db = new sqlite3.Database('./xkcd')
+const db = new sqlite3.Database('./xkcd.db')
 const euphoriaConnection = require('euphoria-connection')
 const connection = new euphoriaConnection('xkcd')
 // require ws and set it up to listen to port 31337.
 const WebSocket = require('ws')
 const ws = new WebSocket.Server({ port: 31337 })
 
-const fif = require('find-in-files')
 connection.once('open', _ => {
 	db.serialize(_ => {
 		db.run('DROP TABLE username')
