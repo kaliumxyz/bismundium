@@ -1,7 +1,10 @@
 'use strict'
 // require ws and set it up to listen to port 31337.
 const WebSocket = require('ws')
+const sqlite3 = require('sqlite3')
 const ws = new WebSocket.Server({ port: 31337 })
+// I'm assuming the seeder script has been ran.
+const db = new sqlite3.Database('./euphoria.db')
 
 
 
@@ -12,7 +15,6 @@ const ws = new WebSocket.Server({ port: 31337 })
 // - Add a function to read out the DB.
 
 ws.on('connection', socket => {
-
 	console.log("User connected")
 	socket.send('connected')
 	socket.on('message',
@@ -20,12 +22,13 @@ ws.on('connection', socket => {
 			socket.send(data, console.error)
 			console.log(data)
 			db.serialize(_ => {
-				db.each("SELECT info FROM username", function (err, row) {
-					socket.send(row.info, console.error)
+				db.each(`SELECT * FROM xkcd WHERE content LIKE '${data}'`, function (err, row) {
+					// console.error(err)
+					socket.send(JSON.stringify(row))
 				})
 			})
-			socket.on("disconnect", ev => {
-				console.log('disconnected:' + socket)
-			})
-})
+		})
+	socket.on("disconnect", ev => {
+		console.log('disconnected:' + socket)
+	})
 })

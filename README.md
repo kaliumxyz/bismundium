@@ -9,10 +9,7 @@ $ npm install euphoria-search
 
 
 ## usage
-Simply require it :D :D :D!
-```js
-const euphoria-search = require('euphoria-search')
-```
+It should be online on kalium.xyz/search
 
 ## tests
 ```
