@@ -1,6 +1,12 @@
 import test from 'ava'
+import seed from './lib/seed.js'
 
-// tests not yet implemented
-test('can seed db', t => {
-	t.pass()
+test('can seed db',async t => {
+	// Make a promise to deal with async stuff.
+	let promise = new Promise((res, err) => {
+		seed('test', res)
+	})
+	// Wait till we get the resulting data then pass the test.
+	await promise.then(_ => t.pass() )
 })
+
