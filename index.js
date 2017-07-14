@@ -1,8 +1,8 @@
 'use strict'
-// require ws and set it up to listen to port 31337.
+// require ws and set it up to listen to port 8050.
 const WebSocket = require('ws')
 const sqlite3 = require('sqlite3')
-const ws = new WebSocket.Server({ port: 31337 })
+const ws = new WebSocket.Server({ port: 8050 })
 // I'm assuming the seeder script has been ran.
 const db = new sqlite3.Database('./euphoria.db')
 
