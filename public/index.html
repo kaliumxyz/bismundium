@@ -1,13 +1,48 @@
 <html>
 	<head>
-		<title> euphoria searcher </title>
-		<link type='stylesheet' href='./assets/css/material-kit.css'>
+		<title> Bismundium </title>
 	</head>
+	<style>
+		html, body{
+			padding: 0;
+			margin: 0;
+		}
+		.container {
+			display: flex;
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			text-align: center;
+			justify-content: middle;
+			height: 100%;
+		}
+		.content {
+			margin: auto;
+			height: 10vh;
+		}
+		input {
+		}
+		ul {
+			display: none;
+		}
+
+	</style>
 	<body>
-		<input disabled />
+		<div class='container'>
+		<div class='content'>
+		<input disabled class=''/>
+		<button> search </button>
 		<ul>
+			<li>
+				result 1
+			</li>
+			<li>
+				result 2
+			</li>
 
 		</ul>
+		</div>
+		</div>
 		<script>
 			const socket = new WebSocket('wss://leet.nu/search')
 			const input = document.querySelector('input')
