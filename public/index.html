@@ -44,7 +44,7 @@
 		</div>
 		</div>
 		<script>
-			const socket = new WebSocket('wss://leet.nu/search')
+			const socket = new WebSocket('ws://kalium.xyz:8050')
 			const input = document.querySelector('input')
 			socket.onopen = _ => input.disabled = false
 			let timeout
