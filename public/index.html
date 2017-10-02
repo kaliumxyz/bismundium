@@ -88,7 +88,6 @@
 			height: 100vh;
 		}
 
-		.disabled {}
 	</style>
 </head>
 
@@ -101,8 +100,8 @@
 			<div class='col-4 text-center card'>
 				<div class="card-body">
 					<h4 class="card-title">Search {room}s history</h4>
-						<div class="alert alert-danger" role="alert">
-							our backend is currently offline.
+						<div class="alert alert-info" role="alert" id='alert'>
+							connecting...
 						</div>
 					<div class='card-block'>
 						<div class="input-group">
@@ -114,7 +113,7 @@
 					</div>
 				</div>
 				<div class='card-block'>
-					<ul class='list-group'>
+					<ul class='list-group' id='list'>
 						<li class='list-group-item'> - </li>
 						<li class='list-group-item'> - </li>
 						<li class='list-group-item'> - </li>
@@ -132,8 +131,9 @@
 
 	<div id="particles-js" class="background"></div>
 
+	<script src='./assets/js/min.js'></script>
 	<script src="./assets/js/particles.js"></script>
-	<script src='./assets/js/app.js'>
+	<script src='./assets/js/app.js'></script>
 
 	</script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

@@ -2,6 +2,8 @@
 particlesJS.load('particles-js', 'assets/particles.json', _ => {
 	const socket = new WebSocket('wss://leet.nu/search')
 	const input = document.querySelector('input')
+	const list = hyperHTML.bind(document.getElementById('list'))
+	const alarm = hyperHTML.bind(document.getElementById('alert'))
 	socket.onopen = _ => input.disabled = false
 	let timeout
 	// sends a search request to the server.
@@ -13,11 +15,20 @@ particlesJS.load('particles-js', 'assets/particles.json', _ => {
 
 	}
 	socket.onopen = data => {
-		// document.querySelector('ul').innerHTML = 'connected'
+		alarm`
+		Connected.
+		`.classList.replace('alert-info', 'alert-success')
+	
+		window.setTimeout(1000, _ => alarm.remove())
+		
+	}
+	socket.onerror = data => {
+		alarm`
+		Our backend is currently offline.
+		`.classList.replace('alert-info', 'alert-danger')
 	}
 	socket.onmessage = data => {
-		console.log(data)
-		document.querySelector('ul').innerHTML += `<li> ${JSON.stringify(data.data)} </li>`
+		list`<li class='list-group-item'> ${JSON.stringify(data.data)} </li>`
 	}
 	input.onkeypress = ev => {
 		window.clearTimeout(timeout)
