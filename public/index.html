@@ -88,20 +88,7 @@
 			height: 100vh;
 		}
 
-		.input {
-			border-radius: 20px 0px 0px 20px;
-			background: white;
-			outline: none;
-			border: 1px solid gray;
-			height: 40px
-		}
-
-		.button {
-			border-radius: 0px 20px 20px 0px;
-			outline: none;
-			border: 1px solid gray;
-			height: 40px
-		}
+		.disabled {}
 	</style>
 </head>
 
@@ -114,9 +101,12 @@
 			<div class='col-4 text-center card'>
 				<div class="card-body">
 					<h4 class="card-title">Search {room}s history</h4>
+						<div class="alert alert-danger" role="alert">
+							our backend is currently offline.
+						</div>
 					<div class='card-block'>
 						<div class="input-group">
-							<input type="text" disabled class="form-control disabled" placeholder="Search for...">
+							<input type="text" class="form-control" placeholder="Search for...">
 							<span class="input-group-btn">
 								<button class="btn btn-secondary" type="button">Go!</button>
 							</span>
@@ -125,12 +115,12 @@
 				</div>
 				<div class='card-block'>
 					<ul class='list-group'>
-						<li class='list-group-item'> 1 </li>
-						<li class='list-group-item'> 1 </li>
-						<li class='list-group-item'> 1 </li>
-						<li class='list-group-item'> 1 </li>
-						<li class='list-group-item'> 1 </li>
-						<li class='list-group-item'> 1 </li>
+						<li class='list-group-item'> - </li>
+						<li class='list-group-item'> - </li>
+						<li class='list-group-item'> - </li>
+						<li class='list-group-item'> - </li>
+						<li class='list-group-item'> - </li>
+						<li class='list-group-item'> - </li>
 					</ul>
 				</div>
 				<div class="card-body">
