@@ -7,7 +7,15 @@ const ws = new WebSocket.Server({ port: 8050 })
 const db = new sqlite3.Database('./euphoria.db')
 
 
+const { Client } = require('pg')
 
+const client = new Client()
+
+await client.connect()
+
+const res = await client.query('SELECT $1::text as message', ['Hello world!'])
+console.log(res.rows[0].message) // Hello world!
+await client.end()
 
 
 // db.open('./xkcd').then( x => x.get("INSERT INTO XKCD VALUES PEW"), _ => process.abort())

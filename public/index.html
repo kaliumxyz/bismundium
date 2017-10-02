@@ -88,17 +88,19 @@
 			height: 100vh;
 		}
 
-		input {
+		.input {
 			border-radius: 20px 0px 0px 20px;
 			background: white;
 			outline: none;
 			border: 1px solid gray;
+			height: 40px
 		}
 
-		button {
+		.button {
 			border-radius: 0px 20px 20px 0px;
 			outline: none;
 			border: 1px solid gray;
+			height: 40px
 		}
 	</style>
 </head>
@@ -108,17 +110,31 @@
 	<div class='container-fluid'>
 		<div class='row align-items-center content'>
 			<div class='col-4'></div>
-			
+
 			<div class='col-4 text-center card'>
 				<div class="card-body">
-				<h4 class="card-title">Search {room}s history</h4>
+					<h4 class="card-title">Search {room}s history</h4>
+					<div class='card-block'>
+						<div class="input-group">
+							<input type="text" disabled class="form-control disabled" placeholder="Search for...">
+							<span class="input-group-btn">
+								<button class="btn btn-secondary" type="button">Go!</button>
+							</span>
+						</div>
+					</div>
+				</div>
 				<div class='card-block'>
-				<input disabled class='' />
-				<button> search </button>
-			</div>
-				<ul>
-				</ul>
-			</div>
+					<ul class='list-group'>
+						<li class='list-group-item'> 1 </li>
+						<li class='list-group-item'> 1 </li>
+						<li class='list-group-item'> 1 </li>
+						<li class='list-group-item'> 1 </li>
+						<li class='list-group-item'> 1 </li>
+						<li class='list-group-item'> 1 </li>
+					</ul>
+				</div>
+				<div class="card-body">
+				</div>
 			</div>
 			<div class='col-4'></div>
 		</div>
