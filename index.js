@@ -23,7 +23,6 @@ ws.on('connection', socket => {
 			console.log(data)
 			db.serialize(_ => {
 				db.each(`SELECT * FROM xkcd WHERE content LIKE '${data}'`, function (err, row) {
-					// console.error(err)
 					socket.send(JSON.stringify(row))
 				})
 			})

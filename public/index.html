@@ -1,72 +1,115 @@
 <html>
-	<head>
-		<title> Bismundium </title>
-	</head>
-	<style>
-		html, body{
-			padding: 0;
-			margin: 0;
-		}
-		.container {
-			display: flex;
-			padding: 0;
-			margin: 0;
-			width: 100%;
-			text-align: center;
-			justify-content: middle;
-			height: 100%;
-		}
-		.content {
-			margin: auto;
-			height: 10vh;
-		}
-		input {
-		}
-		ul {
-			display: none;
-		}
 
-	</style>
-	<body>
-		<div class='container'>
+<head>
+	<title> Bismundium </title>
+</head>
+<style>
+	html,
+	body {
+		padding: 0;
+		margin: 0;
+	}
+
+	.background {
+		z-index: -1;
+		height: 100%;
+		width: 100%;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		position: absolute;
+		background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+		background-size: 1800% 1800%;
+
+		-webkit-animation: rainbow 18s ease infinite;
+		-z-animation: rainbow 18s ease infinite;
+		-o-animation: rainbow 18s ease infinite;
+		animation: rainbow 18s ease infinite;
+	}
+
+	/* animation from: https://codepen.io/nohoid/pen/kIfto */
+	@-webkit-keyframes rainbow {
+		0% {
+			background-position: 0% 82%
+		}
+		50% {
+			background-position: 100% 19%
+		}
+		100% {
+			background-position: 0% 82%
+		}
+	}
+
+	@-moz-keyframes rainbow {
+		0% {
+			background-position: 0% 82%
+		}
+		50% {
+			background-position: 100% 19%
+		}
+		100% {
+			background-position: 0% 82%
+		}
+	}
+
+	@-o-keyframes rainbow {
+		0% {
+			background-position: 0% 82%
+		}
+		50% {
+			background-position: 100% 19%
+		}
+		100% {
+			background-position: 0% 82%
+		}
+	}
+
+	@keyframes rainbow {
+		0% {
+			background-position: 0% 82%
+		}
+		50% {
+			background-position: 100% 19%
+		}
+		100% {
+			background-position: 0% 82%
+		}
+	}
+
+	.container {
+		display: flex;
+		padding: 0;
+		margin: 0;
+		width: 100%;
+		text-align: center;
+		justify-content: middle;
+		height: 100%;
+	}
+
+	.content {
+		margin: auto;
+		height: 10vh;
+	}
+
+</style>
+
+<body>
+
+	<div class='container'>
 		<div class='content'>
-		<input disabled class=''/>
-		<button> search </button>
-		<ul>
-			<li>
-				result 1
-			</li>
-			<li>
-				result 2
-			</li>
-
-		</ul>
+			<input disabled class='' />
+			<button> search </button>
+			<ul>
+			</ul>
 		</div>
-		</div>
-		<script>
-			const socket = new WebSocket('wss://leet.nu/search')
-			const input = document.querySelector('input')
-			socket.onopen = _ => input.disabled = false
-			let timeout
-			// sends a search request to the server.
-			function search() {
-				socket.send(JSON.stringify({"type":"search", "data": input.value}))
-			}
-			// formats the incoming data into an unordered list.
-			function format() {
+	</div>
 
-			}
-			socket.onopen = data => {
-				// document.querySelector('ul').innerHTML = 'connected'
-			}
-			socket.onmessage = data => {
-				console.log(data)
-				document.querySelector('ul').innerHTML += `<li> ${JSON.stringify(data.data)} </li>`
-			}
-			input.onkeypress = ev => {
-				window.clearTimeout(timeout)
-				timeout = window.setTimeout(suggest, 600)
-			}
-		</script>
-	</body>
+	<div id="particles-js" class="background"></div>
+
+	<script src="./assets/js/particles.js"></script>
+	<script src='./assets/js/app.js'>
+
+	</script>
+</body>
 </html>
