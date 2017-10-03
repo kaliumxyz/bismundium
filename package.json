@@ -16,6 +16,7 @@
     "test": "ava"
   },
   "dependencies": {
+    "dotenv": "^4.0.0",
     "euphoria-connection": "^0.3.1",
     "pg": "^7.3.0",
     "sqlite": "^2.8.0",
