@@ -1,6 +1,6 @@
 /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
 particlesJS.load('particles-js', 'assets/particles.json', _ => {
-	const socket = new WebSocket('wss://leet.nu/search')
+	const socket = new WebSocket('ws://localhost')
 	const input = document.querySelector('input')
 	const list = hyperHTML.bind(document.getElementById('list'))
 	const alarm = hyperHTML.bind(document.getElementById('alert'))
@@ -18,8 +18,9 @@ particlesJS.load('particles-js', 'assets/particles.json', _ => {
 		alarm`
 		Connected.
 		`.classList.replace('alert-info', 'alert-success')
+		
 	
-		window.setTimeout(1000, _ => alarm.remove())
+		const timeout = window.setTimeout(_ => {alarm``.hidden = true}, 1000)
 		
 	}
 	socket.onerror = data => {

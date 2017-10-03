@@ -1,25 +1,26 @@
 'use strict'
-// require ws and set it up to listen to port 8050.
 const WebSocket = require('ws')
-// const sqlite3 = require('sqlite3')
-// const ws = new WebSocket.Server({ port: 8050 })
-// I'm assuming the seeder script has been ran.
-// const db = new sqlite3.Database('./euphoria.db')
-
+// pg = PostgreSQL
+const { Client } = require('pg')
 require('dotenv').config()
+const ws = new WebSocket.Server({ port: process.env.port })
+
 
 async function connect () {
-	const { Client } = require('pg')
 
-	const client = new Client(`postgres://${process.env.db_user}:${process.env.db_pass}@localhost:5432/todo`)
+	const client = new Client(`postgres://${process.env.db_user}:${process.env.db_pass}@localhost:5432/euphoria`)
 
 	await client.connect()
-
-	const res = await client.query('SELECT $1::text as message', ['Hello world!'])
-	console.log(res.rows[0].message) 
-	await client.end()
+	return client
 }
-connect().catch(console.error)
+
+connect()
+	.catch(console.error)
+	.then( con => {
+		console.log('connected')
+
+	})
+
 // db.open('./xkcd').then( x => x.get("INSERT INTO XKCD VALUES PEW"), _ => process.abort())
 // todo:
 // - Add a function to read out the DB.
