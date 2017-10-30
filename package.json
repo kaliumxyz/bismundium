@@ -13,11 +13,14 @@
     "euphoria-search"
   ],
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "seed": "./lib/seed.js"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
     "euphoria-connection": "^0.3.1",
+    "k-log": "^0.7.0",
+    "knex": "^0.13.0",
     "pg": "^7.3.0",
     "sqlite": "^2.8.0",
     "sqlite3": "^3.1.8",
